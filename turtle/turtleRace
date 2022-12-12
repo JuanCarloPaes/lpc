@@ -1,0 +1,60 @@
+from turtle import *
+import random
+
+die = [1, 2, 3, 4, 5, 6]
+
+hideturtle()
+
+player_one = Turtle()
+player_one.color("blue")
+player_one.shape("turtle")
+player_one.penup()
+player_one.goto(-200, 100)
+
+player_two = player_one.clone()
+player_two.color("red")
+player_two.penup()
+player_two.goto(-200, -100)
+
+player_one.goto(300, 60)
+player_one.pendown()
+player_one.circle(40)
+player_one.penup()
+player_one.goto(-200, 100)
+
+player_two.goto(300, -140)
+player_two.pendown()
+player_two.circle(40)
+player_two.penup()
+player_two.goto(-200, -100)
+
+
+def turtleRace():
+    while True:
+
+        if player_one.pos() >= (300, 100):
+            print("Player 1 Venceu!")
+            break
+
+        elif player_two.pos() >= (300, -100):
+            print("Player 2 Venceu!")
+            break
+
+        else:
+            player_one_turn = input("Aperte 'Enter' para rolar o dado ")
+            die_outcome = random.choice(die)
+            print("O resultado do dado é: ")
+            print(die_outcome)
+            print("O número de passos é: ")
+            print(20 * die_outcome)
+            player_one.fd(20 * die_outcome)
+            player_two_turn = input("Aperte 'Enter' para rolar o dado ")
+            die_outcome = random.choice(die)
+            print("O resultado do dado é: ")
+            print(die_outcome)
+            print("O número de passos é: ")
+            print(20 * die_outcome)
+            player_two.fd(20 * die_outcome)
+
+
+turtleRace()
